@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.Framework.DependencyInjection;
+using RavenExample.Data;
 
 namespace RavenExample
 {
@@ -8,6 +9,7 @@ namespace RavenExample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddSingleton<DocumentStoreLifecycle>();
         }
 
         public void Configure(IApplicationBuilder app)
