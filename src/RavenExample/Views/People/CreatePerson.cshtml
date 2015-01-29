@@ -1,0 +1,18 @@
+﻿@model RavenExample.People.Person
+
+<html>
+  <head>
+  </head>
+  <body>
+    test2
+
+    @using (Html.BeginForm("CreatePerson", "People"))
+    {
+        @Html.EditorFor(x => x.FirstName)
+        @Html.EditorFor(x => x.LastName)
+        @Html.EditorFor(x => x.Birthdate)
+
+        <input type="submit" value="Submit" />
+    }
+  </body>
+</html>
