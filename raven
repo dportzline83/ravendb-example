@@ -1,1 +1,1 @@
-start src/packages/RavenDb.Server/Raven.Server.exe
+start %HOMEPATH%/.kpm/packages/RavenDB.Server/3.0.3528/tools/Raven.Server.exe

@@ -1,0 +1,23 @@
+﻿@model RavenExample.People.Person
+@{
+    Layout = "_Layout";
+}
+
+@using (Html.BeginForm("CreatePerson", "People"))
+{
+    @Html.LabelFor(x => x.FirstName)
+    @Html.EditorFor(x => x.FirstName)
+    @Html.LabelFor(x => x.LastName)
+    @Html.EditorFor(x => x.LastName)
+    @Html.LabelFor(x => x.Birthdate)
+    @Html.EditorFor(x => x.Birthdate)
+
+    <input type="submit" value="Submit" />
+
+    @Html.ValidationSummary()
+}
+
+@using (Html.BeginForm("Create100", "People"))
+{
+    <input type="submit" value="Create 100 people" />
+}

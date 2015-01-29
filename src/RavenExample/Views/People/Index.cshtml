@@ -1,0 +1,10 @@
+﻿@model IEnumerable<RavenExample.People.Person>
+@{ 
+    Layout = "_Layout";
+}
+<ol>
+  @foreach (var person in Model)
+  {
+      <li>@person.LastName, @person.FirstName, @person.Birthdate</li>
+  }
+</ol>

@@ -24,27 +24,46 @@ namespace RavenExample.People
             _documentSession = _storeLifecycle.Store.OpenSession();
         }
 
-        public JsonResult Index()
+        public ActionResult Index()
         {
             var people = _documentSession.Query<Person>().ToList();
-            return Json(people);
-       } 
+            return View(people);
+        }
 
         [HttpGet]
-        public ActionResult CreatePerson()
+        public ActionResult Create()
         {
-            var person = new Person();
-            return View(person);
+            return View();
         }
 
         [HttpPost]
-        public void CreatePerson(Person person)
+        public ActionResult Create(Person person)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                Context.Response.StatusCode = 400;
+                _documentSession.Store(person);
+                return RedirectToAction("Index");
             }
-            _documentSession.Store(person);
+            else
+            {
+                return View(person);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Create100()
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                _documentSession.Store(new Person
+                {
+                    FirstName = "Generated",
+                    LastName = "Person",
+                    Birthdate = new DateTime(1900, 1, 1)
+                });
+
+            }
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
