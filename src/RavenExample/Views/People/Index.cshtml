@@ -1,15 +1,23 @@
 ﻿@model IEnumerable<RavenExample.People.Person>
-@{ 
+@{
     Layout = "_Layout";
 }
 
-@if (ViewBag.IsStale)
+@if (ViewBag.IsStale != null && ViewBag.IsStale)
 {
     <h2>DATA IS STALE</h2>
 }
 <ol>
   @foreach (var person in Model)
   {
-      <li>@person.LastName, @person.FirstName, @person.Birthdate</li>
+      <li>
+        @person.Id: @person.LastName, @person.FirstName, @person.Birthdate
+
+        @using (Html.BeginForm("Delete", "People"))
+        {
+            <input type="hidden" name="id" value="@person.Id" />
+            <input type="submit" value="Delete" />
+        }
+      </li>
   }
 </ol>

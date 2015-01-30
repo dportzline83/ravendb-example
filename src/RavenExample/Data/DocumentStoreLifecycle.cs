@@ -15,6 +15,13 @@ namespace RavenExample.Data
                 Url = "http://localhost:8080",
                 DefaultDatabase = "RavenExample"
             }.Initialize();
+
+            AddIndexes();
+        }
+
+        private void AddIndexes()
+        {
+            new People_ByBirthdate().Execute(Store);
         }
 
         public void Dispose()

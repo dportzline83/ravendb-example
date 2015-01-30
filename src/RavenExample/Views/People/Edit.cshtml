@@ -1,10 +1,12 @@
 ﻿@model RavenExample.People.Person
-@{
+
+@{ 
     Layout = "_Layout";
 }
 
-@using (Html.BeginForm("Create", "People"))
+@using (Html.BeginForm("Edit", "People"))
 {
+    @Html.HiddenFor(x=>x.Id)
     @Html.LabelFor(x => x.FirstName)
     @Html.EditorFor(x => x.FirstName)
     <br />
@@ -17,9 +19,4 @@
     <input type="submit" value="Submit" />
     <br />
     @Html.ValidationSummary()
-}
-
-@using (Html.BeginForm("Create100", "People"))
-{
-    <input type="submit" value="Create 100 people" />
 }
