@@ -26,8 +26,32 @@ namespace RavenExample.People
 
         public ActionResult Index()
         {
-            var people = _documentSession.Query<Person>().ToList();
+            var people =
+                _documentSession.Query<Person>()
+                .ToList();
             return View(people);
+        }
+
+        // paging
+        public ActionResult All()
+        {
+            var people =
+                _documentSession.Query<Person>()
+                .Take(10000)
+                .ToList();
+            return View("Index", people);
+        }
+
+        // stats and stale data
+        public ActionResult Statistics()
+        {
+            RavenQueryStatistics statistics;
+            var people =
+                _documentSession.Query<Person>()
+                .Statistics(out statistics)
+                .ToList();
+            ViewBag.IsStale = statistics.IsStale;
+            return View("Index", people);
         }
 
         [HttpGet]
@@ -53,13 +77,15 @@ namespace RavenExample.People
         [HttpPost]
         public ActionResult Create100()
         {
+            DateTime date =  DateTime.Now;
             for (int i = 0; i < 100; i++)
             {
+                date = date.AddSeconds(1);
                 _documentSession.Store(new Person
                 {
                     FirstName = "Generated",
                     LastName = "Person",
-                    Birthdate = new DateTime(1900, 1, 1)
+                    Birthdate = date
                 });
 
             }

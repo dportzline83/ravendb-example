@@ -2,6 +2,11 @@
 @{ 
     Layout = "_Layout";
 }
+
+@if (ViewBag.IsStale)
+{
+    <h2>DATA IS STALE</h2>
+}
 <ol>
   @foreach (var person in Model)
   {
