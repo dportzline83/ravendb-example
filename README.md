@@ -26,8 +26,12 @@ A sample ASP.NET 5 application using RavenDB
 - Focus less on how the data is stored, and more on how it will be accessed
 - Ask yourself, will this type ever need to be accessed independently, or does it only make sense within the context of some parent document?
 
-# ACID/BASE
-http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
+# Indexes
+- Queries are always against indexes
+- Indexes are built asynronously in the background
+- Data can be stale
+- Static/Dynamic indexes
+- ACID/BASE - http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
 
 # Examples of usage in this app
 - This is a simple application to demonstrate basic database creation, session usage, and CRUD operations
