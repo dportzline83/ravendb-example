@@ -36,6 +36,75 @@ namespace RavenExample.People
             return View(people);
         }
 
+        #region Creating documents
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                _documentSession.Store(person);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(person);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Create100()
+        {
+            DateTime date = DateTime.Now;
+            for (int i = 0; i < 100; i++)
+            {
+                date = date.AddSeconds(1);
+                _documentSession.Store(new Person
+                {
+                    FirstName = "Generated",
+                    LastName = "Person",
+                    Birthdate = date
+                });
+
+            }
+            return RedirectToAction("Statistics");
+        }
+        #endregion
+
+        #region Editing documents
+        [HttpPost]
+        public ActionResult Edit(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                var savedPerson = _documentSession.Load<Person>(person.Id);
+                savedPerson.FirstName = person.FirstName;
+                savedPerson.LastName = person.LastName;
+                savedPerson.Birthdate = person.Birthdate;
+
+                return View(person);
+            }
+            else
+            {
+                return View(person);
+            }
+        }
+        #endregion
+
+        #region Deleting documents
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            _documentSession.Delete<Person>(id);
+            return RedirectToAction("Index");
+        }
+        #endregion
+
         #region Loading by id
         [HttpGet("{id:int}")]
         public ActionResult Edit(int id)
@@ -109,75 +178,6 @@ namespace RavenExample.People
             // WaitForNonStaleResultsAsOfNow(DateTime)
             // WaitForNonStaleResultsAsOfLastWrite(DateTime)
             #endregion
-        }
-        #endregion
-
-        #region Creating documents
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Person person)
-        {
-            if (ModelState.IsValid)
-            {
-                _documentSession.Store(person);
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(person);
-            }
-        }
-
-        [HttpPost]
-        public ActionResult Create100()
-        {
-            DateTime date = DateTime.Now;
-            for (int i = 0; i < 100; i++)
-            {
-                date = date.AddSeconds(1);
-                _documentSession.Store(new Person
-                {
-                    FirstName = "Generated",
-                    LastName = "Person",
-                    Birthdate = date
-                });
-
-            }
-            return RedirectToAction("Statistics");
-        }
-        #endregion
-
-        #region Editing documents
-        [HttpPost]
-        public ActionResult Edit(Person person)
-        {
-            if (ModelState.IsValid)
-            {
-                var savedPerson = _documentSession.Load<Person>(person.Id);
-                savedPerson.FirstName = person.FirstName;
-                savedPerson.LastName = person.LastName;
-                savedPerson.Birthdate = person.Birthdate;
-
-                return View(person);
-            }
-            else
-            {
-                return View(person);
-            }
-        }
-        #endregion
-
-        #region Deleting documents
-        [HttpPost]
-        public ActionResult Delete(int id)
-        {
-            _documentSession.Delete<Person>(id);
-            return RedirectToAction("Index");
         }
         #endregion
 
