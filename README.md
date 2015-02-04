@@ -28,6 +28,15 @@ A sample ASP.NET 5 application using RavenDB
 - Focus less on how the data is stored, and more on how it will be accessed
 - Ask yourself, will this type ever need to be accessed independently, or does it only make sense within the context of some parent document?
 
+# Some highlighted features of RavenDB 3
+- New Raven Studio! No more Silverlight!!!
+- Support for Voron storage engine (port of Lightning Memory-mapped Database)
+  - More performant
+  - No DTC transaction support
+- Some changes to index performance
+- ```WhatChanged``` and ```HasChanges``` available on session
+- Missing properties on save operation are retained in database
+
 # ACID/BASE - see links below
 
 ### Links
