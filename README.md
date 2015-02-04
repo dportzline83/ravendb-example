@@ -44,3 +44,4 @@ A sample ASP.NET 5 application using RavenDB
 - http://ayende.com/blog/164066/ravendb-acid-base
 - http://ravendb.net/docs/article-page/3.0/Csharp/start/whats-new
 - http://ravendb.net/docs/article-page/3.0/csharp/server/configuration/configuration-options
+- http://docs.mongodb.org/manual/core/data-modeling-introduction/
