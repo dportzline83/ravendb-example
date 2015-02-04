@@ -26,6 +26,22 @@ A sample ASP.NET 5 application using RavenDB
 - Focus less on how the data is stored, and more on how it will be accessed
 - Ask yourself, will this type ever need to be accessed independently, or does it only make sense within the context of some parent document?
 
+# Examples of usage in this app
+- This app is a simple application to demonstrate basic CRUD operations
+- See the ```PeopleController``` for basic usage of Raven, including:
+  - Creating
+  - Editing
+  - Deleting
+  - Loading
+  - Loading multiple docs
+  - Querying with Linq
+  - Some advanced querying features
+  - Paging
+  - Stale data
+
+# ACID/BASE
+http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
+
 # Some highlighted features of RavenDB 3
 - New Raven Studio! No more Silverlight!!!
 - Support for Voron storage engine (port of Lightning Memory-mapped Database)
@@ -35,13 +51,14 @@ A sample ASP.NET 5 application using RavenDB
 - ```WhatChanged``` and ```HasChanges``` available on session
 - Missing properties on save operation are retained in database
 
-# ACID/BASE - see links below
-
 ### Links
-- http://ravendb.net/docs/article-page/2.5/csharp/theory/document-structure-design
-- http://ayende.com/blog/4466/that-no-sql-thing-modeling-documents-in-a-document-database
-- http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
-- http://ayende.com/blog/164066/ravendb-acid-base
-- http://ravendb.net/docs/article-page/3.0/Csharp/start/whats-new
-- http://ravendb.net/docs/article-page/3.0/csharp/server/configuration/configuration-options
-- http://docs.mongodb.org/manual/core/data-modeling-introduction/
+- Document design
+  - http://ravendb.net/docs/article-page/2.5/csharp/theory/document-structure-design
+  - http://ayende.com/blog/4466/that-no-sql-thing-modeling-documents-in-a-document-database
+  - http://docs.mongodb.org/manual/core/data-modeling-introduction/
+- More on ACID/BASE nature of Raven
+  - http://ayende.com/blog/164066/ravendb-acid-base
+- Server configuration
+  - http://ravendb.net/docs/article-page/3.0/csharp/server/configuration/configuration-options
+- New in RavenDB 3
+  - http://ravendb.net/docs/article-page/3.0/Csharp/start/whats-new
