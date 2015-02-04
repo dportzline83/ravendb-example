@@ -13,18 +13,16 @@ A sample ASP.NET 5 application using RavenDB
 # Some thoughts on document database design
 
 ## Traditional RDBMS
-- Each "type" gets its own table
+- Domain objects spread across many tables
 - Normalization
 - Lots of foreign key relationships to produce complete picture
-- Many tables/relationships accessed to produce needed data for a single logical grouping
 
 ## Document Databases
-- Store more related types together in the same document
+- Domain objects consolidated into fewer documents
 - Denormalization
 - Less foreign key relationships
-- Fewer documents, ideally one per logical page
 
-### How to think about it
+## How to think about it
 - Focus less on how the data is stored, and more on how it will be accessed
 - Ask yourself, will this type ever need to be accessed independently, or does it only make sense within the context of some parent document?
 
@@ -44,3 +42,5 @@ A sample ASP.NET 5 application using RavenDB
 - http://ayende.com/blog/4466/that-no-sql-thing-modeling-documents-in-a-document-database
 - http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
 - http://ayende.com/blog/164066/ravendb-acid-base
+- http://ravendb.net/docs/article-page/3.0/Csharp/start/whats-new
+- http://ravendb.net/docs/article-page/3.0/csharp/server/configuration/configuration-options
