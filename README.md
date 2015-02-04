@@ -26,8 +26,12 @@ A sample ASP.NET 5 application using RavenDB
 - Focus less on how the data is stored, and more on how it will be accessed
 - Ask yourself, will this type ever need to be accessed independently, or does it only make sense within the context of some parent document?
 
+# ACID/BASE
+http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
+
 # Examples of usage in this app
-- This app is a simple application to demonstrate basic CRUD operations
+- This is a simple application to demonstrate basic database creation, session usage, and CRUD operations
+- Start with ```DocumentStoreLifecycle``` to see how to create a database
 - See the ```PeopleController``` for basic usage of Raven, including:
   - Creating
   - Editing
@@ -38,9 +42,6 @@ A sample ASP.NET 5 application using RavenDB
   - Some advanced querying features
   - Paging
   - Stale data
-
-# ACID/BASE
-http://ravendb.net/docs/article-page/2.5/csharp/client-api/advanced/transaction-support
 
 # Some highlighted features of RavenDB 3
 - New Raven Studio! No more Silverlight!!!
