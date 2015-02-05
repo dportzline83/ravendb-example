@@ -22,6 +22,7 @@ namespace RavenExample.Data
         private void AddIndexes()
         {
             new People_ByBirthdate().Execute(Store);
+            new People_ByFirstNameAndBirthdate().Execute(Store);
         }
 
         public void Dispose()

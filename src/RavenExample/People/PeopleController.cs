@@ -8,14 +8,6 @@ using Raven.Client.Linq;
 
 namespace RavenExample.People
 {
-    public class Person
-    {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime Birthdate { get; set; }
-    }
-
     [Route("[Controller]/[Action]")]
     public class PeopleController : Controller
     {
@@ -119,8 +111,8 @@ namespace RavenExample.People
         public ActionResult LoadByIds([FromQuery] IEnumerable<int> id)
         {
             IEnumerable<ValueType> ids = id.Select(x => (ValueType)x);
-            var person = _documentSession.Load<Person>(ids);
-            return View("Index", person);
+            var people = _documentSession.Load<Person>(ids);
+            return View("Index", people);
         }
         #endregion
 
@@ -131,11 +123,15 @@ namespace RavenExample.People
                 .Where(x => x.Birthdate > DateTime.Now)
                 .OrderByDescending(x => x.Birthdate); // Sorting on some fields requires an index
             return View("Index", people);
+
+            /***
+                Other supported linq operations: First, FirstOrDefault, Single, SingleOrDefault, Where/Any etc.
+            ***/
         }
         #endregion
 
         #region Advanced Raven.Client.Linq queries
-        public ActionResult ByFirstName()
+        public ActionResult ByFirstNameAndBirthdate()
         {
             var people = _documentSession.Query<Person>()
                 .Where(x => x.FirstName.In("Darrel", "Sam"))
@@ -144,12 +140,12 @@ namespace RavenExample.People
         }
 
         /***
-            You can also use: Where/Any, Where/ContainsAny, Where/ContainsAll
+            Other advanced Raven.Linq operations: Where/ContainsAny, Where/ContainsAll
 
             Make sure your queries are being interpreted correctly.
         ***/
         #endregion
-
+        
         #region Paging
         public ActionResult All()
         {
@@ -173,10 +169,12 @@ namespace RavenExample.People
             return View("Index", people);
 
             #region Waiting for non-stale results
-            // WaitForNonStaleResults(DateTime)
-            // WaitForNonStaleResultsAsOf(DateTime, DateTime)
-            // WaitForNonStaleResultsAsOfNow(DateTime)
-            // WaitForNonStaleResultsAsOfLastWrite(DateTime)
+            /***
+                Mostly just for testing: WaitForNonStaleResults(DateTime timeout)
+                WaitForNonStaleResultsAsOf(DateTime cutoff, DateTime timeout)
+                WaitForNonStaleResultsAsOfNow(DateTime timeout)
+                WaitForNonStaleResultsAsOfLastWrite(DateTime timeout)
+            ***/
             #endregion
         }
         #endregion
