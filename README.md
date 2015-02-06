@@ -27,7 +27,7 @@ A sample ASP.NET 5 application using RavenDB
   // OrderLines
   {
     "Id": "1",
-    "Product": "1",
+    "ProductId": "1",
     "Quantity": "10",
     "Price": "10.00"
   }
@@ -54,7 +54,7 @@ A sample ASP.NET 5 application using RavenDB
     [
       {
         "Id": "1",
-        "Product": "1",
+        "ProductId": "1",
         "Quantity": "10",
         "Price": "10.00"
       }
