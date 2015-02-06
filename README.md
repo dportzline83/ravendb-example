@@ -1,6 +1,15 @@
 # ravendb-example
 A sample ASP.NET 5 application using RavenDB
 
+# Some highlighted features of RavenDB 3
+- New Raven Studio! No more Silverlight!!!
+- Support for Voron storage engine (port of Lightning Memory-mapped Database)
+  - More performant
+  - No DTC transaction support
+- Some changes to index performance
+- ```WhatChanged``` and ```HasChanges``` available on session
+- Missing properties on save operation are retained in database
+
 # Advantages of a document database over RDBMS
 - Ease of development
   - No difference between data storage model and application model
@@ -93,15 +102,6 @@ A sample ASP.NET 5 application using RavenDB
   - Some advanced querying features
   - Paging
   - Stale data
-
-# Some highlighted features of RavenDB 3
-- New Raven Studio! No more Silverlight!!!
-- Support for Voron storage engine (port of Lightning Memory-mapped Database)
-  - More performant
-  - No DTC transaction support
-- Some changes to index performance
-- ```WhatChanged``` and ```HasChanges``` available on session
-- Missing properties on save operation are retained in database
 
 ### Links
 - Document design
