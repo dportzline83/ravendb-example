@@ -9,6 +9,7 @@ A sample ASP.NET 5 application using RavenDB
 - Some changes to index performance
 - ```WhatChanged``` and ```HasChanges``` available on session
 - Missing properties on save operation are retained in database
+- Full details in links at the bottom
 
 # Advantages of a document database over RDBMS
 - Ease of development
