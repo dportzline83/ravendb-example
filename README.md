@@ -17,10 +17,57 @@ A sample ASP.NET 5 application using RavenDB
 - Normalization
 - Lots of foreign key relationships to produce complete picture
 
+  ```
+  // Orders
+  {
+    "Id": "1",
+    "UserId": "1"
+  }
+  
+  // OrderLines
+  {
+    "Id": "1",
+    "Product": "1",
+    "Quantity": "10",
+    "Price": "10.00"
+  }
+  
+  // Products
+  {
+    "Id": "1",
+    "Description": "Blah blah blah",
+    "Price": "10:00"
+  }
+  ```
+
 ## Document Databases
 - Domain objects consolidated into fewer documents
 - Denormalization
 - Less foreign key relationships
+
+```
+  // Orders
+  {
+    "Id": "1",
+    "UserId": "1",
+    "OrderLines":
+    [
+      {
+        "Id": "1",
+        "Product": "1",
+        "Quantity": "10",
+        "Price": "10.00"
+      }
+    ]
+  }
+  
+  // Products
+  {
+    "Id": "1",
+    "Description": "Blah blah blah",
+    "Price": "10:00"
+  }
+  ```
 
 ## How to think about it
 - Focus less on how the data is stored, and more on how it will be accessed
